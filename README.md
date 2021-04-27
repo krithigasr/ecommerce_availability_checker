@@ -1,4 +1,4 @@
-# E-commerce Product Availability Checker										-
+# E-commerce Product Availability Checker								
 
 
 ## Contents
