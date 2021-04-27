@@ -50,6 +50,8 @@ With the growth of E-commerce, shopping for all commodities have been shifted on
   ```
 
   The libraries needed are -  requests, validators, time, re, bs4, plyer and  traceback.
+  
+ * Also, There is a icon that has been included in the github project. Make sure this in the same path as the python script. This is just an icon that appears on the desktop notification and is completely optional.
 
 ## Running the Python Script 
 
