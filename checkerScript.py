@@ -27,7 +27,7 @@ def get_actual_values(placeHolder):
         return value
     else:
         return "None"
-    
+# Extracting price info of the product    
 def extract_price_info(parsed_doc):
             availability="None"
             
@@ -37,7 +37,7 @@ def extract_price_info(parsed_doc):
             
            
             # There exists a range of price values in the following case
-            # Taking the least value of the range for our processing  
+            # Taking the least value of the range for processing  
             price_interval=False
             if price_val.find("-")>-1:
                 price_interval=True
@@ -77,7 +77,7 @@ def extract_price_info(parsed_doc):
                     if feature_price=="None":
                         # Not able to fetch the price for the chosen product
                          price_val=False
-                        
+            # The product is mostly in stock, if there is a price attached to it            
             else:
                 availability="In Stock."
                   
@@ -129,7 +129,8 @@ def extract_pageInfo(url,option,current_price):
         if "ships" in str(availability_value):           
             availability_value="In Stock."
         
-        # In some cases the availability is not explicity mnetioned, so getting it from the price field in the website    # 
+        # In some cases the availability is not explicity mnetioned,
+        #so getting it from the price field in the website 
         
         # Get the product price and availability
         prod_price,availability_value=extract_price_info(parsed_doc)      
@@ -220,7 +221,7 @@ def format_notifier_message(choice,message,title):
 user_url=input("Please enter the Amazon URL for the product that you're looking for: \n" )
 while 1:
     if not(validate_url(user_url)):
-        user_url=input("Please enter a valid URL")
+        user_url=input("Please enter a valid URL ")
     else:
         break;
 
@@ -228,7 +229,7 @@ current_price=0
 while 1:
     option=int(input("Choose either one of the following options \n 1. Product Stock check \n 2. Product Price check \n \n" ))
     if(option==1):
-        print("You will be notified about the product status every 2 hours.")
+        print("You will be notified if the product comes back in stock.")
         break;
     elif(option==2):
         current_price=float(input("Enter the current price of the product in CAD: "))
@@ -241,7 +242,7 @@ while 1:
 
 
 url=shorten_url(user_url)
-print("Trying to reach the url --",url)
+print("Trying to reach the url -- ",url)
 
 while(True):
     extract_pageInfo(url,option,current_price) 
